@@ -8,7 +8,7 @@
 #     ./db-dumper.sh mydb dbuser secret ~/backups/mydb 30
 #
 # This will dump database "mydb" to "~/backups/mydb" and also manage old dumps
-# automatically - ld dumps will be archived and old archives will be removed
+# automatically - old dumps will be archived and old archives will be removed
 # so that max number of simultaneously stored archives is 30 (last argument).
 # dbuser:secret is the username and password to access the database.
 #
