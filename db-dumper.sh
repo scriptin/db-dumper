@@ -47,7 +47,7 @@ done
 
 # Make a new dump
 new_dump=${db_name_escaped}_${current_time}.sql
-mysqldump --user=$db_username $db_name &> $backup_dir/$new_dump
+mysqldump --user=$db_username --databases $db_name &> $backup_dir/$new_dump
 
 # Get filenames for all dump archives.
 all_archives=(`ls $backup_dir | grep "^${db_name_escaped}_.*\.sql\.gz\$"`)
