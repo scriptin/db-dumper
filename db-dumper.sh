@@ -57,7 +57,7 @@ whitelist=(`ls $backup_dir | grep "^${db_name_escaped}_.*\.sql\.gz\$" | sort -r 
 
 # @param string Needle
 # @param string[] Haystack
-# @return 0 if haystack contains needlr, 1 otherwise
+# @return 0 if a haystack contains a needle, 1 otherwise
 contains () {
   local e
   for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
