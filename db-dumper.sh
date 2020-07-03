@@ -26,6 +26,9 @@ db_password=$3
 backup_dir=$4
 save_last_n_archives=$5
 
+# To prevent the "Warning: Using a password on the command line interface can be insecure." message
+export MYSQL_PWD=$db_password
+
 # Escaped version of database name to use in paths.
 db_name_escaped=`echo $db_name | sed 's/[^a-zA-Z0-9_-]/_/g'`
 
@@ -44,7 +47,7 @@ done
 
 # Make a new dump
 new_dump=${db_name_escaped}_${current_time}.sql
-mysqldump --user=$db_username --password=$db_password $db_name &> $backup_dir/$new_dump
+mysqldump --user=$db_username $db_name &> $backup_dir/$new_dump
 
 # Get filenames for all dump archives.
 all_archives=(`ls $backup_dir | grep "^${db_name_escaped}_.*\.sql\.gz\$"`)
